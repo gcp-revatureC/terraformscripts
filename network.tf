@@ -20,3 +20,8 @@ resource "google_compute_subnetwork" "subnet1" {
         ipc_cidr_range = "10.2.0.0/24" 
     }
 }
+resource "google_compute_vpn_gateway" "gateway1" { 
+    name = "vpn_gate"
+    region = "us-central1"
+    network = "google_compute_network.vpc_netowrk.self_test"
+}
