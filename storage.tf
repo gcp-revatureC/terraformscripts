@@ -5,7 +5,7 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "car-store" {
-  name     = "cardata"
+  name     = "car-data"
   location = "US"
   storage_class = "MULTI_REGIONAL"
   lifecycle_rule {
@@ -21,14 +21,16 @@ resource "google_storage_bucket" "car-store" {
 
 resource "google_storage_bucket" "archive-store" {
   name     = "archive"
-  location = "US"
+  location = "us-central1"
   storage_class = "COLDLINE"
   lifecycle_rule{
     action{
-      type = delete
+    type = delete
     condition {
       age = 365
   }
+}
+}
 }
 
 resource "google_bigquery_dataset" "default" {
@@ -47,10 +49,6 @@ resource "google_bigquery_dataset" "default" {
     domain = "example.com"
   }
  
-}
-
-resource "random_id" "db_name_suffix" {
-  byte_length = 4
 }
 
 resource "google_sql_database_instance" "master" {
