@@ -1,7 +1,8 @@
-Provider "google" {
-    project = "{{sunny-density-249820}}"
-    region = "us-central1"
-    zone = "us-central1-c"
+    
+provider "google" {
+  credentials = "${file("account.json")}"
+  project     = "kent-terraform-admin"
+  region      = "us-central1"
 }
 
 resource "google_compute_network" "vpc_network" {
