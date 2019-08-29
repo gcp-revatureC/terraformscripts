@@ -1,12 +1,12 @@
 resource "google_compute_network" "vpc_network" {
   name         = "storage-network"
-  ipv4_range = 10.1.0.0/16
+  ipv4_range = "10.1.0.0/16"
   auto_create_subnetworks = false
 }
 
 resource "google_compute_network" "vpc_network2" {
   name         = "application-network"
-    ipv4_range = 10.2.0.0/16
+    ipv4_range = "10.2.0.0/16"
   auto_create_subnetworks = false
 }
 
@@ -48,7 +48,7 @@ resource "google_compute_vpn_gateway" "gateway1" {
 
 resource "google_compute_firewall" "default" {
   name    = "firewalls"
-  network = "${google_compute_network.default.name}"
+  network = "${google_compute_network.vpc_network.name}"
 
   allow {
     protocol = "icmp"
