@@ -1,12 +1,12 @@
 resource "google_compute_network" "vpc_network" {
-  name         = "storage-network"
-  ipv4_range = "10.1.0.0/16"
+  name                    = "storage-network"
+  ipv4_range              = "10.1.0.0/16"
   auto_create_subnetworks = false
 }
 
 resource "google_compute_network" "vpc_network2" {
-  name         = "application-network"
-    ipv4_range = "10.2.0.0/16"
+  name                    = "application-network"
+  ipv4_range              = "10.2.0.0/16"
   auto_create_subnetworks = false
 }
 
