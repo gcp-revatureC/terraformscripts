@@ -7,3 +7,7 @@ provider "google" {
 module "network" {
   source              = "./network.tf"
 }
+
+module "storage" {
+  source              - "./storage.tf"
+}
