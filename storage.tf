@@ -1,9 +1,3 @@
-provider "google" {
-  credentials = "${file("account.json")}"
-  project     = "kent-terraform-admin"
-  region      = "us-central1"
-}
-
 resource "google_storage_bucket" "car-store" {
   name          = "car-data-234254"
   location      = "US"
@@ -25,7 +19,7 @@ resource "google_storage_bucket" "archive-store" {
   storage_class = "COLDLINE"
   lifecycle_rule {
     action {
-      type = "delete"
+      type = "Delete"
     }
     condition {
       age = "365"
@@ -43,17 +37,12 @@ resource "google_bigquery_dataset" "default" {
   labels = {
     env = "default"
   }
-
-  access {
-    role   = "ADMIN"
-    domain = "example.com"
-  }
 }
 
 resource "google_sql_database_instance" "master" {
-  name = "master-instance"
+  name             = "master-instance"
   database_version = "POSTGRES_9_6"
-  region = "us-central1"
+  region           = "${var.region}"
 
   settings {
     # Second-generation instance tiers are based on the machine
