@@ -1,36 +1,36 @@
 provider "google" {
   credentials = "${file("account.json")}"
-  project     = "my-project-id"
+  project     = "kent-terraform-admin"
   region      = "us-central1"
 }
 
 resource "google_storage_bucket" "car-store" {
-  name     = "car-data"
-  location = "US"
+  name          = "car-data-234254"
+  location      = "US"
   storage_class = "MULTI_REGIONAL"
   lifecycle_rule {
-      action {
-        type = SetStorageClass
-        storage_class = COLDLINE
-      }
-      condition {
-        age = 2
-      }
+    action {
+      type          = "SetStorageClass"
+      storage_class = "COLDLINE"
+    }
+    condition {
+      age = "2"
+    }
   }
 }
 
 resource "google_storage_bucket" "archive-store" {
-  name     = "archive"
-  location = "us-central1"
+  name          = "archive-234254"
+  location      = "us-central1"
   storage_class = "COLDLINE"
-  lifecycle_rule{
-    action{
-    type = delete
+  lifecycle_rule {
+    action {
+      type = "delete"
+    }
     condition {
-      age = 365
+      age = "365"
+    }
   }
-}
-}
 }
 
 resource "google_bigquery_dataset" "default" {
@@ -48,7 +48,6 @@ resource "google_bigquery_dataset" "default" {
     role   = "ADMIN"
     domain = "example.com"
   }
- 
 }
 
 resource "google_sql_database_instance" "master" {
