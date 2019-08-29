@@ -1,15 +1,15 @@
 resource "google_app_engine_application" "dealer-upload-app" {
-  name = "Dealer-Upload"
+ # name = "Dealer-Upload"
   project     = "${var.project}"
-  location_id = "${var.location}"
+  location_id = "${var.region}"
 }
 resource "google_app_engine_application" "thirdparty-api" {
-  name = "APIs"
+#  name = "APIs"
   project     = "${var.project}"
-  location_id = "${var.location}"
+  location_id = "${var.region}"
 }
 resource "google_app_engine_application" "analysis-app" {
-  name = "Analytics-App"
+#  name = "Analytics-App"
   project     = "${var.project}"
-  location_id = "${var.location}"
+  location_id = "${var.region}"
 }
