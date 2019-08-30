@@ -2,8 +2,8 @@ resource "google_pubsub_topic" "car-info" {
   name = "car-info"
 }
 
-resource "google_cloudiot_registry" "default-registry" {
-  name = "default-registry"
+resource "google_cloudiot_registry" "car-registry" {
+  name = "car-registry"
 
   state_notification_config = {
     pubsub_topic_name = "${google_pubsub_topic.car-info.id}"
